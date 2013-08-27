@@ -1,4 +1,5 @@
 BblBootstrap::Application.routes.draw do
+  get "autores/index"
   get "assuntos/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
