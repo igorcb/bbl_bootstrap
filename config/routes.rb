@@ -1,4 +1,5 @@
 BblBootstrap::Application.routes.draw do
+  get "locais/index"
   get "editoras/index"
   get "classificacoes/index"
   get "casas/index"
