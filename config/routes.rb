@@ -10,7 +10,7 @@ BblBootstrap::Application.routes.draw do
   resources :assuntos
   resources :livros
 
-  root 'livros#index'
+  root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
