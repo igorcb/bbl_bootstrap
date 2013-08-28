@@ -1,11 +1,16 @@
 BblBootstrap::Application.routes.draw do
-  get "livros/index"
-  get "locais/index"
-  get "editoras/index"
-  get "classificacoes/index"
-  get "casas/index"
-  get "autores/index"
-  get "assuntos/index"
+  get "static_pages/home"
+  get "static_pages/help"
+  get "static_pages/about"
+  resources :casas
+  resources :locais
+  resources :editoras
+  resources :classificacoes
+  resources :autores
+  resources :assuntos
+  resources :livros
+
+  root 'livros#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
