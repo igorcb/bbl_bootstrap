@@ -4,11 +4,11 @@ describe "User pages" do
   subject { page }
 
   describe "index" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:usuario) { FactoryGirl.create(:usuario) }
 
     before(:each) do
-      sign_in user
-      visit users_path
+      sign_in usuario
+      visit usuarios_path
     end
 
     it { should have_title('All users') }
@@ -16,13 +16,13 @@ describe "User pages" do
 
     describe "pagination" do
 
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
-      after(:all)  { User.delete_all }
+      before(:all) { 30.times { FactoryGirl.create(:usuario) } }
+      after(:all)  { Usuario.delete_all }
 
       it { should have_selector('div.pagination') }
 
       it "should list each user" do
-        User.paginate(page: 1).each do |user|
+        Usuario.paginate(page: 1).each do |user|
           expect(page).to have_selector('li', text: user.name)
         end
       end
@@ -36,26 +36,26 @@ describe "User pages" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
           sign_in admin
-          visit users_path
+          visit usuarios_path
         end
 
-        it { should have_link('delete', href: user_path(User.first)) }
+        it { should have_link('delete', href: usuario_path(Usuario.first)) }
         it "should be able to delete another user" do
           expect do
             click_link('delete', match: :first)
-          end.to change(User, :count).by(-1)
+          end.to change(Usuario, :count).by(-1)
         end
-        it { should_not have_link('delete', href: user_path(admin)) }
+        it { should_not have_link('delete', href: usuario_path(admin)) }
       end
     end
   end
 
   describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    let(:usuario) { FactoryGirl.create(:usuario) }
+    before { visit usuario_path(usuario) }
 
-    it { should have_content(user.name) }
-    it { should have_title(user.name) }
+    it { should have_content(usuario.name) }
+    it { should have_title(usuario.name) }
   end
 
   describe "signup page" do
@@ -73,7 +73,7 @@ describe "User pages" do
 
     describe "with invalid information" do
       it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
+        expect { click_button submit }.not_to change(Usuario, :count)
       end
     end
     
@@ -86,26 +86,26 @@ describe "User pages" do
       end
 
       it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
+        expect { click_button submit }.to change(Usuario, :count).by(1)
       end
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) { User.find_by(email: 'user@example.com') }
+        let(:usuario) { Usuario.find_by(email: 'user@example.com') }
 
         #it { should have_link('Sign out') }
-        it { should have_title(user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_title(usuario.name) }
+        it { should have_selector('div.alert.alert-success', text: 'Bem vindo') }
       end
     end
   end
 
   describe "edit" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:usuario) { FactoryGirl.create(:usuario) }
     
     before do
-      sign_in user
-      visit edit_user_path(user)
+      sign_in usuario
+      visit edit_usuario_path(usuario)
     end
 
     describe "page" do
@@ -126,25 +126,25 @@ describe "User pages" do
       before do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
-        fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Password",         with: usuario.password
+        fill_in "Confirm Password", with: usuario.password
         click_button "Save changes"
       end
 
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
-      specify { expect(user.reload.name).to  eq new_name }
-      specify { expect(user.reload.email).to eq new_email }
+      specify { expect(usuario.reload.name).to  eq new_name }
+      specify { expect(usuario.reload.email).to eq new_email }
     end
     
     describe "forbidden attributes" do
       let(:params) do
-        { user: { admin: true, password: user.password,
-                  password_confirmation: user.password } }
+        { usuario: { admin: true, password: usuario.password,
+                  password_confirmation: usuario.password } }
       end
-      before { patch user_path(user), params }
-      specify { expect(user.reload).not_to be_admin }
+      before { patch usuario_path(usuario), params }
+      specify { expect(usuario.reload).not_to be_admin }
       
     end
   end

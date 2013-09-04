@@ -1,28 +1,28 @@
-class UsersController < ApplicationController
+class UsuariosController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @usuarios = Usuario.paginate(page: params[:page])
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = Usuario.find(params[:id])
   end
 
   def new
-  	@user = User.new
+  	@user = Usuario.new
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = Usuario.find(params[:id])
   end
 
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = Usuario.new(user_params)    # Not the final implementation!
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Bem vindo to the BBL OnLine!"
       redirect_to @user
     else
       render 'new'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = Usuario.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       sign_in @user
@@ -41,14 +41,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    Usuario.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    redirect_to users_url
+    redirect_to usuarios_url
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:usuario).permit(:name, :email, :password,
                                    :password_confirmation)
     end
     
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = Usuario.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
