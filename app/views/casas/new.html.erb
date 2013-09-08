@@ -1,0 +1,12 @@
+<% provide(:title, 'Nova casa') %>
+<h1>Nova casa</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@casa) do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "Salvar", class: "btn btn-small btn-primary" %>
+      <%= link_to "Cancelar", casas_path, class: "btn btn-mini" %>
+    <% end %>
+  </div>
+</div>

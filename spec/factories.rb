@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :casa do
-    descricao "Casa Exemplo"
+    sequence(:descricao)  { |n| "Casa #{n}" }
   end
 
   factory :classificacao do

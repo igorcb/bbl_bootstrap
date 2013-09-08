@@ -1,0 +1,5 @@
+<tr>
+  <td> <%= link_to casa.descricao, casa  %> </td>
+  <td> <%= link_to "Editar", edit_casa_path(casa), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to "Delete", casa, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar a casa?" } %> </td>
+</tr>
