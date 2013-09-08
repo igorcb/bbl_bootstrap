@@ -1,2 +1,21 @@
-<h1>Assuntos#index</h1>
-<p>Find me in app/views/assuntos/index.html.erb</p>
+<% provide(:title, 'Assuntos') %>
+<h1>Listagem de assuntos</h1>
+
+<%= link_to "Novo Assunto", new_assunto_path, class: "btn btn-primary btn-large btn-block"  %>
+
+<%= will_paginate %>
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Descrição</th>
+		<th colspan="3">Opções</th>
+	</thead>
+	<tbody>
+
+    <%= render	@assuntos %>
+
+	</tbody>
+</table>
+
+
+<%= will_paginate %>

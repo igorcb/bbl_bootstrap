@@ -1,0 +1,14 @@
+<% provide(:title, 'Editar assuntos') %>
+<h1>Editar assunto</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@assunto) do |f| %>
+       <%= render "fields", f: f %>
+    
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= link_to "Cancelar", assuntos_path, class: "btn btn-mini" %>
+    <% end %>
+
+  </div>
+</div>

@@ -1,4 +1,5 @@
 BblBootstrap::Application.routes.draw do
+  
   resources :usuarios
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -16,7 +17,7 @@ BblBootstrap::Application.routes.draw do
   # resources :editoras
   # resources :classificacoes
   # resources :autores
-  # resources :assuntos
+  resources :assuntos
   # resources :livros
 
   #root 'static_pages#home'

@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :assunto do
-    descricao "Assunto Exemplo"
+    sequence(:descricao)  { |n| "Assunto #{n}" }
   end
 
   factory :autor do
