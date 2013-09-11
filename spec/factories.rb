@@ -15,8 +15,10 @@ FactoryGirl.define do
   end
 
   factory :autor do
-  	descricao "Autor exemplo"
-  	cutter "11.01"
+  	#descricao "Autor exemplo"
+  	#cutter "11.01"
+    sequence(:descricao)  { |n| "Autor #{n}" }
+    sequence(:cutter)     { |n| "11.#{n}" }
   end
 
   factory :casa do
