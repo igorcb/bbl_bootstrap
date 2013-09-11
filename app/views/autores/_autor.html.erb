@@ -1,5 +1,6 @@
 <tr>
 	 <td><%= link_to autor.descricao, autor %></td>
-	 <td><%= link_to autor.cutter, autor %></td>
+	 <td><%= link_to autor.cutter, autor  %></td>
+	 <td> <%= link_to "Editar", edit_autor_path(autor), class: "btn btn-mini btn-primary" %> </td>
 	 <td> <%= link_to "Delete", autor, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar o autor?" } %> </td>
 </tr>

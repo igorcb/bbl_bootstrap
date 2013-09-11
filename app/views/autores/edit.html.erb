@@ -1,0 +1,14 @@
+<% provide(:title, 'Editar autor') %>
+<h1>Editar autor</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@autor) do |f| %>
+       <%= render "fields", f: f %>
+    
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= link_to "Cancelar", autores_path, class: "btn btn-mini" %>
+    <% end %>
+
+  </div>
+</div>
