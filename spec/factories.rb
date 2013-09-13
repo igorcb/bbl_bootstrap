@@ -33,9 +33,12 @@ FactoryGirl.define do
   end
 
   factory :editora do
-    descricao "editora exemplo"
-    cidade "cidade exemplo"
-    ano "1900"
+    # descricao "editora exemplo"
+    # cidade "cidade exemplo"
+    # ano "1900"
+    sequence(:descricao)  { |n| "Editora #{n}" }
+    sequence(:cidade)     { |n| "Fortaleza" }
+    sequence(:ano)        { |n| "1990" }
   end
 
   factory :local do

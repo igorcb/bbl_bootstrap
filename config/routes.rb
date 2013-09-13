@@ -14,7 +14,7 @@ BblBootstrap::Application.routes.draw do
   
   resources :casas
   # resources :locais
-  # resources :editoras
+  resources :editoras
   resources :classificacoes
   resources :autores
   resources :assuntos

@@ -1,2 +1,21 @@
-<h1>Editoras#index</h1>
-<p>Find me in app/views/editoras/index.html.erb</p>
+<% provide(:title, 'Editoras') %>
+<h1>All editoras</h1>
+
+<%= link_to "New editora", new_editora_path, class: "btn btn-primary btn-large btn-block"  %>
+
+<%= will_paginate %>
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Descrição</th>
+		<th colspan="3">Opções</th>
+	</thead>
+	<tbody>
+
+    <%= render	@editoras %>
+
+	</tbody>
+</table>
+
+
+<%= will_paginate %>
