@@ -30,8 +30,8 @@ describe "Autores Paginas" do
       end
 
       it { should have_title('Autores') }
-      it { should have_content('Listagem de autores') }
-      it { should have_link('Novo autor') }
+      it { should have_content('All autores') }
+      it { should have_link('New autor') }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:autor) } } 
@@ -78,7 +78,7 @@ describe "Autores Paginas" do
           visit autores_path
         end
     
-        it { should have_link('Editar', href: edit_autor_path(@autor)) }
+        it { should have_link('Edit', href: edit_autor_path(@autor)) }
       end
     end
   end
@@ -146,11 +146,11 @@ describe "Autores Paginas" do
         sign_in usuario
         visit new_autor_path 
       end
-      it { should have_content("Novo autor") }
-      it { should have_title("Novo autor") }
-      it { should have_link("Cancelar", href: autores_path) }
+      it { should have_content("New autor") }
+      it { should have_title("New autor") }
+      it { should have_link("Cancel", href: autores_path) }
 
-      let(:submit) { "Salvar" }
+      let(:submit) { "Save autor" }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um autor" do
@@ -181,10 +181,7 @@ describe "Autores Paginas" do
           it { should have_selector('div.alert.alert-success', text: 'sucessfully created') }
         end
       end
-
-
     end
-
   end
 
   describe "editar" do
@@ -215,13 +212,9 @@ describe "Autores Paginas" do
         sign_in usuario
         visit edit_autor_path(autor)
       end
-
-      it { should have_link("Cancelar", href: autores_path) }
-
-      describe "pagina" do
-        it { should have_content('Editar autor') }
-        it { should have_title('Editar autor') }
-      end
+      it { should have_content('Edit autor') }
+      it { should have_title('Edit autor') }
+      it { should have_link("Cancel", href: autores_path) }
 
       describe "com informacoes invalidas" do
         before do 

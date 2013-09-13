@@ -1,5 +1,5 @@
-<% provide(:title, 'Novo autor') %>
-<h1>Novo autor</h1>
+<% provide(:title, 'New autor') %>
+<h1>New autor</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -7,8 +7,8 @@
       
       <%= render 'fields', f: f %>
 
-      <%= f.submit "Salvar", class: "btn btn-small btn-primary" %>
-      <%= link_to "Cancelar", autores_path, class: "btn btn-mini" %>
+      <%= f.submit "Save autor", class: "btn btn-small btn-primary" %>
+      <%= link_to "Cancel", autores_path, class: "btn btn-mini" %>
     <% end %>
   </div>
 </div>
