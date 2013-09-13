@@ -29,8 +29,8 @@ describe "Assuntos pagina" do
       end
 
       it { should have_title('Assuntos') }
-      it { should have_content('Listagem de assuntos') }
-      it { should have_link('Novo Assunto') }
+      it { should have_content('All assuntos') }
+      it { should have_link('New assunto') }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:assunto) } } 
@@ -46,8 +46,6 @@ describe "Assuntos pagina" do
       end
 
       describe "delete links" do
-        it { should_not have_link('delete') }
-
         before { Assunto.create(descricao: "Exemplo teste") }
 
         let(:admin) { FactoryGirl.create(:admin) }
@@ -78,7 +76,7 @@ describe "Assuntos pagina" do
           visit assuntos_path
         end
       
-        it { should have_link('Editar', href: edit_assunto_path(@assunto)) }
+        it { should have_link('Edit', href: edit_assunto_path(@assunto)) }
       end
 
     end
@@ -113,8 +111,8 @@ describe "Assuntos pagina" do
         visit assunto_path(assunto) 
       end
 
-      it { should have_content(assunto.descricao) }
       it { should have_title(assunto.descricao) }
+      it { should have_content(assunto.descricao) }
     end
   end
 
@@ -145,9 +143,11 @@ describe "Assuntos pagina" do
         sign_in usuario
         visit new_assunto_path 
       end
-      it { should have_link("Cancelar", href: assuntos_path) }
+      it { should have_title("New assunto") }
+      it { should have_content("New assunto") }
+      it { should have_link("Cancel", href: assuntos_path) }
 
-      let(:submit) { "Salvar" }
+      let(:submit) { "Save assunto" }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um assunto" do
@@ -205,14 +205,9 @@ describe "Assuntos pagina" do
         sign_in usuario
         visit edit_assunto_path(assunto)
       end
-
-      it { should have_link("Cancelar", href: assuntos_path) }
-
-      describe "pagina" do
-        it { should have_content('Editar assunto') }
-        it { should have_title('Editar assunto') }
-        #it { should have_link('change', href: 'http://gravatar.com/emails') }
-      end
+      it { should have_title("Edit assunto") }
+      it { should have_content("Edit assunto") }
+      it { should have_link("Cancel", href: assuntos_path) }
 
       describe "com informacoes invalidas" do
         before do 
@@ -223,7 +218,7 @@ describe "Assuntos pagina" do
         it { should have_content("error") }
       end
 
-      describe "com informacao vaidas" do
+      describe "com informacao validas" do
         let(:new_name)  { "New Name" }
         before do
           fill_in "Descricao",             with: new_name

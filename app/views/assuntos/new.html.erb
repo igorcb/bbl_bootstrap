@@ -1,11 +1,11 @@
-<% provide(:title, 'Novo Assunto') %>
-<h1>Sign up</h1>
+<% provide(:title, 'New assunto') %>
+<h1>New assunto</h1>
 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@assunto) do |f| %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Salvar", class: "btn btn-small btn-primary" %>
+      <%= f.submit "Save assunto", class: "btn btn-small btn-primary" %>
       <%= link_to "Cancelar", assuntos_path, class: "btn btn-mini" %>
     <% end %>
   </div>
