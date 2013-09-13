@@ -180,7 +180,7 @@ describe "Assuntos pagina" do
   describe "editar" do
     describe "deve estar logado" do
       let(:assunto) { FactoryGirl.create(:assunto) }
-      before { visit assunto_path(assunto) }
+      before { visit edit_assunto_path(assunto) }
 
       it { should have_content('Please sign in.') }
     end
@@ -191,7 +191,7 @@ describe "Assuntos pagina" do
 
       before(:each) do
         sign_in usuario
-        visit assunto_path(assunto) 
+        visit edit_assunto_path(assunto) 
       end
 
       it { should have_content('administradores') }
