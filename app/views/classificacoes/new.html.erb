@@ -1,0 +1,14 @@
+<% provide(:title, 'New classificacao') %>
+<h1>New classificacao</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@classificacao) do |f| %>
+      
+      <%= render 'fields', f: f %>
+
+      <%= f.submit "Save classificacao", class: "btn btn-small btn-primary" %>
+      <%= link_to "Cancel", classificacoes_path, class: "btn btn-mini" %>
+    <% end %>
+  </div>
+</div>

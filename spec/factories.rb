@@ -26,8 +26,10 @@ FactoryGirl.define do
   end
 
   factory :classificacao do
-    cdd "000.00" 
-    descricao "classificacao exemplo"
+    # cdd "000.00" 
+    # descricao "classificacao exemplo"
+    sequence(:cdd)     { |n| "000.0#{n}" }
+    sequence(:descricao)  { |n| "Classificacao #{n}" }
   end
 
   factory :editora do

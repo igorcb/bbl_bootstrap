@@ -1,2 +1,20 @@
-<h1>Classificacoes#index</h1>
-<p>Find me in app/views/classificacoes/index.html.erb</p>
+<% provide(:title, 'Classificações') %>
+<h1>All classificações</h1>
+
+<%= link_to "New classificação", new_casa_path, class: "btn btn-primary btn-large btn-block"  %>
+
+<%= will_paginate %>
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Descrição</th>
+		<th colspan="3">Opções</th>
+	</thead>
+	<tbody>
+
+    <%= render @classificacoes %>
+
+	</tbody>
+</table>
+
+<%= will_paginate %>
