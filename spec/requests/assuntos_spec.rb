@@ -48,25 +48,23 @@ describe "Assuntos pagina" do
       describe "delete links" do
         it { should_not have_link('delete') }
 
-        describe "como um usuario administrador" do
-          before { Assunto.create(descricao: "Exemplo teste") }
+        before { Assunto.create(descricao: "Exemplo teste") }
 
-          let(:admin) { FactoryGirl.create(:admin) }
-          
-          before do
-            sign_in admin
-            visit assuntos_path
-          end
+        let(:admin) { FactoryGirl.create(:admin) }
         
-          it { should have_link('Delete', href: assunto_path(Assunto.first)) }
-
-          it "deve ser capaz de apagar assunto" do
-            expect do
-              click_link('Delete', match: :first)
-            end.to change(Assunto, :count).by(-1)
-          end
-          # it { should_not have_link('delete', href: usuario_path(admin)) }
+        before do
+          sign_in admin
+          visit assuntos_path
         end
+      
+        it { should have_link('Delete', href: assunto_path(Assunto.first)) }
+
+        it "deve ser capaz de apagar assunto" do
+          expect do
+            click_link('Delete', match: :first)
+          end.to change(Assunto, :count).by(-1)
+        end
+        # it { should_not have_link('delete', href: usuario_path(admin)) }
       end
 
       describe "edit links" do
@@ -123,7 +121,7 @@ describe "Assuntos pagina" do
   describe "novo assunto" do
     describe "deve estar logado" do
       let(:assunto) { FactoryGirl.create(:assunto) }
-      before { visit assunto_path(assunto) }
+      before { visit new_assunto_path }
 
       it { should have_content('Please sign in.') }
     end
@@ -134,7 +132,7 @@ describe "Assuntos pagina" do
 
       before(:each) do
         sign_in usuario
-        visit assunto_path(assunto) 
+        visit new_assunto_path
       end
 
       it { should have_content('administradores') }
