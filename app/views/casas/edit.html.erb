@@ -1,5 +1,5 @@
-<% provide(:title, 'Editar casas') %>
-<h1>Editar casa</h1>
+<% provide(:title, 'Edit casa') %>
+<h1>Edit casa</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -7,7 +7,7 @@
        <%= render "fields", f: f %>
     
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-      <%= link_to "Cancelar", casas_path, class: "btn btn-mini" %>
+      <%= link_to "Cancel", casas_path, class: "btn btn-mini" %>
     <% end %>
 
   </div>

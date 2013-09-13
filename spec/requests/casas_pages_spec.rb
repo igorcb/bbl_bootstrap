@@ -28,8 +28,8 @@ describe "Casas pagina" do
     	  visit casas_path
       end
     	it { should have_title('Casas') }
-      it { should have_content('Listagem de casas') }
-      it { should have_link('Nova casa') }
+      it { should have_content('All casas') }
+      it { should have_link('New casa') }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:casa) } } 
@@ -77,7 +77,7 @@ describe "Casas pagina" do
           visit casas_path
         end
       
-        it { should have_link('Editar', href: edit_casa_path(@casa)) }
+        it { should have_link('Edit', href: edit_casa_path(@casa)) }
       end
     end
   end
@@ -142,11 +142,11 @@ describe "Casas pagina" do
         sign_in usuario
         visit new_casa_path 
       end
-      it { should have_content("Nova casa") }
-      it { should have_title("Nova casa") }
-      it { should have_link("Cancelar", href: casas_path) }
+      it { should have_content("New casa") }
+      it { should have_title("New casa") }
+      it { should have_link("Cancel", href: casas_path) }
 
-      let(:submit) { "Salvar" }
+      let(:submit) { "Save casa" }
 
       describe "com informacoes invalidas" do
         it "nao deve criar uma casa" do
@@ -205,12 +205,9 @@ describe "Casas pagina" do
         visit edit_casa_path(casa)
       end
 
-      it { should have_link("Cancelar", href: casas_path) }
-
-      describe "pagina" do
-        it { should have_content('Editar casa') }
-        it { should have_title('Editar casa') }
-      end
+      it { should have_content('Edit casa') }
+      it { should have_title('Edit casa') }
+      it { should have_link("Cancel", href: casas_path) }
 
       describe "com informacoes invalidas" do
         before do 
@@ -229,7 +226,7 @@ describe "Casas pagina" do
         end
 
         it { should have_title(new_name) }
-        it { should have_selector('div.alert.alert-success') }
+        it { should have_selector('div.alert.alert-success', text: 'sucessfully update') }
         #it { should have_link('Sign out', href: signout_path) }
         specify { expect(casa.reload.descricao).to  eq new_name }
       end
