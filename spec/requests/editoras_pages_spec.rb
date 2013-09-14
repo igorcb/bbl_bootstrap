@@ -30,7 +30,7 @@ describe "Editoras Paginas" do
 
       it { should have_title('Editoras') }
       it { should have_content('All editoras') }
-      it { should have_link('New editora') }
+      it { should have_link('New editora', href: new_editora_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:editora) } } 

@@ -31,7 +31,7 @@ describe "Autores Paginas" do
 
       it { should have_title('Autores') }
       it { should have_content('All autores') }
-      it { should have_link('New autor') }
+      it { should have_link('New autor', href: new_autor_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:autor) } } 

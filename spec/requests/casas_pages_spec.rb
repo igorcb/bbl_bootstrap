@@ -29,7 +29,7 @@ describe "Casas pagina" do
       end
     	it { should have_title('Casas') }
       it { should have_content('All casas') }
-      it { should have_link('New casa') }
+      it { should have_link('New casa', href: new_casa_path) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:casa) } } 

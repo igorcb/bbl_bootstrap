@@ -30,7 +30,7 @@ describe "Assuntos pagina" do
 
       it { should have_title('Assuntos') }
       it { should have_content('All assuntos') }
-      it { should have_link('New assunto') }
+      it { should have_link('New assunto', href: new_assunto_path) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:assunto) } } 
