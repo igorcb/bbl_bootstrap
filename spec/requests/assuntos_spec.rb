@@ -113,6 +113,10 @@ describe "Assuntos pagina" do
 
       it { should have_title(assunto.descricao) }
       it { should have_content(assunto.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_assunto_path) }
+      it { should have_link('Edit', href: edit_assunto_path(assunto)) }
+      it { should have_link('All', href: assuntos_path) }
     end
   end
 
@@ -145,6 +149,7 @@ describe "Assuntos pagina" do
       end
       it { should have_title("New assunto") }
       it { should have_content("New assunto") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: assuntos_path) }
 
       let(:submit) { "Save assunto" }

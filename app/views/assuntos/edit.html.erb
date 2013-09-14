@@ -6,7 +6,7 @@
     <%= form_for(@assunto) do |f| %>
        <%= render "fields", f: f %>
     
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
       <%= link_to "Cancel", assuntos_path, class: "btn btn-mini" %>
     <% end %>
 
