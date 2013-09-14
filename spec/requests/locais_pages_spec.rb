@@ -30,7 +30,7 @@ describe "Locais Pagina" do
       end
     	it { should have_title('Locais') }
       it { should have_content('All locais') }
-      it { should have_link('New local') }
+      it { should have_link('New local', href: new_local_path ) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:local) } } 
@@ -113,6 +113,10 @@ describe "Locais Pagina" do
 
       it { should have_content(local.descricao) }
       it { should have_title(local.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_local_path) }
+      it { should have_link('Edit', href: edit_local_path(local)) }
+      it { should have_link('All', href: locais_path) }
     end
   end
 
@@ -145,6 +149,7 @@ describe "Locais Pagina" do
       end
       it { should have_content("New local") }
       it { should have_title("New local") }
+     it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: locais_path) }
 
       let(:submit) { "Save local" }
@@ -208,6 +213,7 @@ describe "Locais Pagina" do
       end
       it { should have_content('Edit local') }
       it { should have_title('Edit local') }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: locais_path) }
 
       describe "com informacoes invalidas" do
