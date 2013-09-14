@@ -113,6 +113,10 @@ describe "Casas pagina" do
 
       it { should have_content(casa.descricao) }
       it { should have_title(casa.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_casa_path) }
+      it { should have_link('Edit', href: edit_casa_path(casa)) }
+      it { should have_link('All', href: casas_path) }
     end
   end
 
@@ -144,6 +148,7 @@ describe "Casas pagina" do
       end
       it { should have_content("New casa") }
       it { should have_title("New casa") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: casas_path) }
 
       let(:submit) { "Save casa" }
@@ -207,6 +212,7 @@ describe "Casas pagina" do
 
       it { should have_content('Edit casa') }
       it { should have_title('Edit casa') }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: casas_path) }
 
       describe "com informacoes invalidas" do

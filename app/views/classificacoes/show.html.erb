@@ -10,3 +10,10 @@
 	<%= @classificacao.descricao %>
 </p>
 
+<div class="form-actions">
+  <%= link_to "New", new_classificacao_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_classificacao_path(@classificacao), class: "btn" %>
+  <%= link_to "All", classificacoes_path, class: "btn" %>
+</div>
+
+

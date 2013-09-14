@@ -1,6 +1,6 @@
 <tr>
-ss	 <td><%= link_to classificacao.cdd, classificacao  %></td>
 	 <td><%= link_to classificacao.descricao, classificacao %></td>
-	 <td> <%= link_to "Edit", edit_classificacao_path(classificacao), class: "btn btn-mini btn-primary" %> </td>
-	 <td> <%= link_to "Delete", classificacao, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar o classificacao?" } %> </td>
+   <td><%= classificacao.cdd  %></td>
+	 <td><%= link_to "Edit", edit_classificacao_path(classificacao), class: "btn btn-mini btn-primary" %> </td>
+	 <td><%= link_to "Delete", classificacao, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar a classificacao?" } %> </td>
 </tr>

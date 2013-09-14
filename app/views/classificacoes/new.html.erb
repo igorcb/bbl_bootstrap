@@ -6,9 +6,12 @@
     <%= form_for(@classificacao) do |f| %>
       
       <%= render 'fields', f: f %>
-
-      <%= f.submit "Save classificacao", class: "btn btn-small btn-primary" %>
-      <%= link_to "Cancel", classificacoes_path, class: "btn btn-mini" %>
+  
+      <div class="form-actions">
+	      <%= f.submit "Save classificacao", class: "btn btn-primary" %>
+	      <%= link_to "Cancel", classificacoes_path, class: "btn btn-mini" %>
+      </div>
+  
     <% end %>
   </div>
 </div>

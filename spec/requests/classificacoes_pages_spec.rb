@@ -31,7 +31,7 @@ describe "Classificacoes Pagina" do
 
       it { should have_title('Classificações') }
       it { should have_content('All classificações') }
-      it { should have_link('New classificação') }
+      it { should have_link('New classificação', href: new_classificacao_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:classificacao) } } 
@@ -117,6 +117,10 @@ describe "Classificacoes Pagina" do
       it { should have_title(classificacao.cdd) }
       it { should have_content(classificacao.cdd) }
       it { should have_content(classificacao.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_classificacao_path) }
+      it { should have_link('Edit', href: edit_classificacao_path(classificacao)) }
+      it { should have_link('All', href: classificacoes_path) }
     end
   end
 
@@ -149,6 +153,7 @@ describe "Classificacoes Pagina" do
       end
       it { should have_content("New classificacao") }
       it { should have_title("New classificacao") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: classificacoes_path) }
 
       let(:submit) { "Save classificacao" }
@@ -216,6 +221,7 @@ describe "Classificacoes Pagina" do
 
       it { should have_content('Edit classificação') }
       it { should have_title('Edit classificação') }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: classificacoes_path) }
 
       describe "com informacoes invalidas" do
