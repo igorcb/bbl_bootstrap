@@ -117,6 +117,10 @@ describe "Editoras Paginas" do
       it { should have_content(editora.cidade) }
       it { should have_content(editora.ano) }
       it { should have_title(editora.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_editora_path) }
+      it { should have_link('Edit', href: edit_editora_path(editora)) }
+      it { should have_link('All', href: editoras_path) }
     end
   end
 
@@ -150,6 +154,7 @@ describe "Editoras Paginas" do
 
       it { should have_content("New editora") }
       it { should have_title("New editora") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: editoras_path) }
 
       let(:submit) { "Save editora" }
@@ -219,6 +224,7 @@ describe "Editoras Paginas" do
       end
       it { should have_content('Edit editora') }
       it { should have_title('Edit editora') }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: editoras_path) }
 
       describe "com informacoes invalidas" do

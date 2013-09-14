@@ -5,8 +5,12 @@
   <div class="span6 offset3">
     <%= form_for(@editora) do |f| %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Save editora", class: "btn btn-small btn-primary" %>
-      <%= link_to "Cancel", editoras_path, class: "btn btn-mini" %>
+      
+      <div class="form-actions">
+      	<%= f.submit "Save editora", class: "btn btn-primary" %>
+        <%= link_to "Cancel", editoras_path, class: "btn btn-mini" %>
+      </div>
+      
     <% end %>
   </div>
 </div>
