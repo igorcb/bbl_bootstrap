@@ -44,6 +44,12 @@ describe "Authentication" do
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
       it { should have_link('Assuntos',    href: assuntos_path) }
+      it { should have_link('Autores',     href: autores_path) }
+      it { should have_link('Casas',       href: casas_path) }
+      it { should have_link('Classificacoes', href: classificacoes_path) }
+      it { should have_link('Editoras',    href: editoras_path) }
+      it { should have_link('Locais',      href: locais_path) }
+      # it { should have_link('Livros',    href: assuntos_path) }
 
       describe "followed by signout" do
         before { click_link "Sign out" }
