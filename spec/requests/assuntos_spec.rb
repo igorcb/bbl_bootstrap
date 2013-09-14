@@ -212,6 +212,7 @@ describe "Assuntos pagina" do
       end
       it { should have_title("Edit assunto") }
       it { should have_content("Edit assunto") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: assuntos_path) }
 
       describe "com informacoes invalidas" do
