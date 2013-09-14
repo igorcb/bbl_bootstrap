@@ -5,8 +5,12 @@
   <div class="span6 offset3">
     <%= form_for(@assunto) do |f| %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Save assunto", class: "btn btn-small btn-primary" %>
-      <%= link_to "Cancelar", assuntos_path, class: "btn btn-mini" %>
+  
+      <div class="form-actions">
+	      <%= f.submit "Save assunto", class: "btn btn-primary" %>
+	      <%= link_to "Cancel", assuntos_path, class: "btn btn-mini" %>
+      </div>
+  
     <% end %>
   </div>
 </div>
