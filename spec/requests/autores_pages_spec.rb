@@ -116,6 +116,10 @@ describe "Autores Paginas" do
       it { should have_content(autor.descricao) }
       it { should have_content(autor.cutter) }
       it { should have_title(autor.descricao) }
+      it { should have_selector('div.form-actions') }
+      it { should have_link('New', href: new_autor_path) }
+      it { should have_link('Edit', href: edit_autor_path(autor)) }
+      it { should have_link('All', href: autores_path) }
     end
   end
 
@@ -148,6 +152,7 @@ describe "Autores Paginas" do
       end
       it { should have_content("New autor") }
       it { should have_title("New autor") }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: autores_path) }
 
       let(:submit) { "Save autor" }
@@ -214,6 +219,7 @@ describe "Autores Paginas" do
       end
       it { should have_content('Edit autor') }
       it { should have_title('Edit autor') }
+      it { should have_selector('div.form-actions') }
       it { should have_link("Cancel", href: autores_path) }
 
       describe "com informacoes invalidas" do

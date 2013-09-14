@@ -7,8 +7,11 @@
       
       <%= render 'fields', f: f %>
 
-      <%= f.submit "Save autor", class: "btn btn-small btn-primary" %>
-      <%= link_to "Cancel", autores_path, class: "btn btn-mini" %>
+      <div class="form-actions">
+	      <%= f.submit "Save autor", class: "btn btn-primary" %>
+	      <%= link_to "Cancel", autores_path, class: "btn btn-mini" %>
+      </div>
+
     <% end %>
   </div>
 </div>
