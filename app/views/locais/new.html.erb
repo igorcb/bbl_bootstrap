@@ -1,0 +1,12 @@
+<% provide(:title, 'New local') %>
+<h1>New local</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@local) do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "Save local", class: "btn btn-small btn-primary" %>
+      <%= link_to "Cancel", locais_path, class: "btn btn-mini" %>
+    <% end %>
+  </div>
+</div>

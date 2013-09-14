@@ -13,7 +13,7 @@ BblBootstrap::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   
   resources :casas
-  # resources :locais
+  resources :locais
   resources :editoras
   resources :classificacoes
   resources :autores

@@ -42,7 +42,7 @@ FactoryGirl.define do
   end
 
   factory :local do
-    descricao "Assunto Exemplo"
+    sequence(:descricao)  { |n| "Local #{n}" }
   end
 
 end
