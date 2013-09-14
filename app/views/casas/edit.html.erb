@@ -4,10 +4,12 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@casa) do |f| %>
-       <%= render "fields", f: f %>
+      <%= render "fields", f: f %>
     
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-      <%= link_to "Cancel", casas_path, class: "btn btn-mini" %>
+      <div class="form-actions">
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+        <%= link_to "Cancel", casas_path, class: "btn btn-mini" %>
+      </div>
     <% end %>
 
   </div>

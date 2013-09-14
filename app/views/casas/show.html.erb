@@ -1,5 +1,12 @@
 <% provide(:title, @casa.descricao ) %>
 
 <p>
+	<strong>Descrição:</strong>
 	<%= @casa.descricao %>
 </p>
+
+<div class="form-actions">
+  <%= link_to "New", new_casa_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_casa_path(@casa), class: "btn" %>
+  <%= link_to "All", casas_path, class: "btn" %>
+</div>
