@@ -2,7 +2,7 @@
   <td> <%= link_to editora.descricao, editora  %> </td>
   <td> <%= editora.cidade  %> </td>
   <td> <%= editora.ano  %> </td>
-  <td> <%= link_to "Edit", edit_editora_path(editora), class: "btn btn-mini btn-primary"  %> </td>
-  <td> <%= link_to "Delete", editora, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar editora?" } %> </td>
+  <td> <%= link_to t('views.edit'), edit_editora_path(editora), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to t('views.destroy'), editora, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
 
 </tr>

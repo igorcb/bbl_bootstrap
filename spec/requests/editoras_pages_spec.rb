@@ -29,8 +29,8 @@ describe "Editoras Paginas" do
       end
 
       it { should have_title('Editoras') }
-      it { should have_content('All editoras') }
-      it { should have_link('New editora', href: new_editora_path) }
+      it { should have_content(I18n.t('views.listing') + ' editoras') }
+      it { should have_link(I18n.t('views.new_female') + ' editora', href: new_editora_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:editora) } } 
@@ -57,11 +57,11 @@ describe "Editoras Paginas" do
        	  visit editoras_path
         end
       
-        it { should have_link('Delete', href: editora_path(Editora.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: editora_path(Editora.first)) }
 
         it "deve ser capaz de apagar editora" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Editora, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -78,7 +78,7 @@ describe "Editoras Paginas" do
           visit editoras_path
         end
     
-        it { should have_link('Edit', href: edit_editora_path(@editora)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_editora_path(@editora)) }
       end
     end
   end
@@ -118,9 +118,9 @@ describe "Editoras Paginas" do
       it { should have_content(editora.ano) }
       it { should have_title(editora.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_editora_path) }
-      it { should have_link('Edit', href: edit_editora_path(editora)) }
-      it { should have_link('All', href: editoras_path) }
+      it { should have_link(I18n.t('views.new'), href: new_editora_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_editora_path(editora)) }
+      it { should have_link(I18n.t('views.list'), href: editoras_path) }
     end
   end
 
@@ -152,12 +152,12 @@ describe "Editoras Paginas" do
         visit new_editora_path 
       end
 
-      it { should have_content("New editora") }
-      it { should have_title("New editora") }
+      it { should have_content(I18n.t('views.new_female') + ' editora') }
+      it { should have_title(I18n.t('views.new_female') + ' editora') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: editoras_path) }
+      it { should have_link(I18n.t("views.cancel"), href: editoras_path) }
 
-      let(:submit) { "Save editora" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um editora" do
@@ -222,17 +222,17 @@ describe "Editoras Paginas" do
         sign_in usuario
         visit edit_editora_path(editora)
       end
-      it { should have_content('Edit editora') }
-      it { should have_title('Edit editora') }
+      it { should have_content(I18n.t('views.edit') + ' editora') }
+      it { should have_title(I18n.t('views.edit') + ' editora') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: editoras_path) }
+      it { should have_link(I18n.t("views.cancel"), href: editoras_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
           fill_in "Cidade",                with: ""
           fill_in "Ano",                   with: ""
-          click_button "Save changes" 
+          click_button I18n.t("views.update")
         end
 
         it { should have_content("error") }
@@ -246,7 +246,7 @@ describe "Editoras Paginas" do
           fill_in "Descricao",             with: new_editora
           fill_in "Cidade",                with: new_cidade
           fill_in "Ano",                   with: new_ano
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_editora) }
