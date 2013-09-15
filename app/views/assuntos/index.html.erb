@@ -1,7 +1,7 @@
 <% provide(:title, 'Assuntos') %>
-<h1>All assuntos</h1>
+<h1><%= t('views.listing') %> assunto </h1>
 
-<%= link_to "New assunto", new_assunto_path, class: "btn btn-primary btn-large btn-block"  %>
+<%= link_to "#{t('views.new')} assunto", new_assunto_path, class: "btn btn-primary btn-large btn-block"  %>
 
 <%= will_paginate %>
 

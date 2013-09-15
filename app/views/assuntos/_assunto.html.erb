@@ -1,5 +1,5 @@
 <tr>
   <td> <%= link_to assunto.descricao, assunto  %> </td>
-  <td> <%= link_to "Edit", edit_assunto_path(assunto), class: "btn btn-mini btn-primary"  %> </td>
-  <td> <%= link_to "Delete", assunto, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar o assunto?" } %> </td>
+  <td> <%= link_to t('views.edit'), edit_assunto_path(assunto), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to t('views.destroy'), assunto, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
 </tr>

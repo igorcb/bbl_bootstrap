@@ -7,7 +7,8 @@ describe "Assuntos pagina" do
     describe "deve estar logado" do
       before { visit assuntos_path }
 
-      it { should have_content('Please sign in.') }
+      #it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -17,7 +18,7 @@ describe "Assuntos pagina" do
         visit assuntos_path 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -29,8 +30,8 @@ describe "Assuntos pagina" do
       end
 
       it { should have_title('Assuntos') }
-      it { should have_content('All assuntos') }
-      it { should have_link('New assunto', href: new_assunto_path) }
+      it { should have_content(I18n.t('views.listing') + ' assunto') }
+      it { should have_link(I18n.t('views.new') + ' assunto', href: new_assunto_path) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:assunto) } } 
@@ -55,11 +56,11 @@ describe "Assuntos pagina" do
           visit assuntos_path
         end
       
-        it { should have_link('Delete', href: assunto_path(Assunto.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: assunto_path(Assunto.first)) }
 
         it "deve ser capaz de apagar assunto" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Assunto, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -76,7 +77,7 @@ describe "Assuntos pagina" do
           visit assuntos_path
         end
       
-        it { should have_link('Edit', href: edit_assunto_path(@assunto)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_assunto_path(@assunto)) }
       end
 
     end
@@ -87,7 +88,7 @@ describe "Assuntos pagina" do
       let(:assunto) { FactoryGirl.create(:assunto) }
       before { visit assunto_path(assunto) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -99,7 +100,7 @@ describe "Assuntos pagina" do
         visit assunto_path(assunto) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -114,9 +115,9 @@ describe "Assuntos pagina" do
       it { should have_title(assunto.descricao) }
       it { should have_content(assunto.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_assunto_path) }
-      it { should have_link('Edit', href: edit_assunto_path(assunto)) }
-      it { should have_link('All', href: assuntos_path) }
+      it { should have_link(I18n.t('views.new'), href: new_assunto_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_assunto_path(assunto)) }
+      it { should have_link(I18n.t('views.list'), href: assuntos_path) }
     end
   end
 
@@ -125,7 +126,7 @@ describe "Assuntos pagina" do
       let(:assunto) { FactoryGirl.create(:assunto) }
       before { visit new_assunto_path }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -137,7 +138,7 @@ describe "Assuntos pagina" do
         visit new_assunto_path
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -147,12 +148,12 @@ describe "Assuntos pagina" do
         sign_in usuario
         visit new_assunto_path 
       end
-      it { should have_title("New assunto") }
-      it { should have_content("New assunto") }
+      it { should have_title(I18n.t('views.new') + ' assunto') }
+      it { should have_content(I18n.t('views.new') + ' assunto') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: assuntos_path) }
+      it { should have_link(I18n.t("views.cancel"), href: assuntos_path) }
 
-      let(:submit) { "Save assunto" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um assunto" do
@@ -187,7 +188,7 @@ describe "Assuntos pagina" do
       let(:assunto) { FactoryGirl.create(:assunto) }
       before { visit edit_assunto_path(assunto) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -199,7 +200,7 @@ describe "Assuntos pagina" do
         visit edit_assunto_path(assunto) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -210,15 +211,15 @@ describe "Assuntos pagina" do
         sign_in usuario
         visit edit_assunto_path(assunto)
       end
-      it { should have_title("Edit assunto") }
-      it { should have_content("Edit assunto") }
+      it { should have_title(I18n.t('views.edit') + ' assunto') }
+      it { should have_content(I18n.t('views.edit') + ' assunto') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: assuntos_path) }
+      it { should have_link(I18n.t("views.cancel"), href: assuntos_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
-        	click_button "Save changes" 
+        	click_button I18n.t("views.update")
         end
 
         it { should have_content("error") }
@@ -228,7 +229,7 @@ describe "Assuntos pagina" do
         let(:new_name)  { "New Name" }
         before do
           fill_in "Descricao",             with: new_name
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_name) }
