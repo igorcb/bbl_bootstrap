@@ -141,6 +141,7 @@ pt-BR:
 
   views:
     new: Novo
+    new_female: Nova
     show: Exibir
     edit: Editar
     destroy: Deletar

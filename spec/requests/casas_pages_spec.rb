@@ -28,8 +28,8 @@ describe "Casas pagina" do
     	  visit casas_path
       end
     	it { should have_title('Casas') }
-      it { should have_content('All casas') }
-      it { should have_link('New casa', href: new_casa_path) }
+      it { should have_content(I18n.t('views.listing') + ' casas') }
+      it { should have_link(I18n.t('views.new_female') + ' casa', href: new_casa_path) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:casa) } } 
@@ -45,8 +45,6 @@ describe "Casas pagina" do
       end
 
       describe "delete links" do
-        it { should_not have_link('delete') }
-
         before { Casa.create(descricao: "Exemplo teste") }
 
         let(:admin) { FactoryGirl.create(:admin) }
@@ -56,11 +54,11 @@ describe "Casas pagina" do
           visit casas_path
         end
       
-        it { should have_link('Delete', href: casa_path(Casa.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: casa_path(Casa.first)) }
 
         it "deve ser capaz de apagar a casa" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Casa, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -77,7 +75,7 @@ describe "Casas pagina" do
           visit casas_path
         end
       
-        it { should have_link('Edit', href: edit_casa_path(@casa)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_casa_path(@casa)) }
       end
     end
   end
@@ -114,9 +112,9 @@ describe "Casas pagina" do
       it { should have_content(casa.descricao) }
       it { should have_title(casa.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_casa_path) }
-      it { should have_link('Edit', href: edit_casa_path(casa)) }
-      it { should have_link('All', href: casas_path) }
+      it { should have_link(I18n.t('views.new'), href: new_casa_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_casa_path(casa)) }
+      it { should have_link(I18n.t('views.list'), href: casas_path) }
     end
   end
 
@@ -146,12 +144,12 @@ describe "Casas pagina" do
         sign_in usuario
         visit new_casa_path 
       end
-      it { should have_content("New casa") }
-      it { should have_title("New casa") }
+      it { should have_content(I18n.t('views.new_female') + ' casa') }
+      it { should have_title(I18n.t('views.new_female') + ' casa') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: casas_path) }
+      it { should have_link(I18n.t("views.cancel"), href: casas_path) }
 
-      let(:submit) { "Save casa" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar uma casa" do
@@ -210,15 +208,15 @@ describe "Casas pagina" do
         visit edit_casa_path(casa)
       end
 
-      it { should have_content('Edit casa') }
-      it { should have_title('Edit casa') }
+      it { should have_content(I18n.t('views.edit') + ' casa') }
+      it { should have_title(I18n.t('views.edit') + ' casa') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: casas_path) }
+      it { should have_link(I18n.t("views.cancel"), href: casas_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
-          click_button "Save changes" 
+          click_button I18n.t("views.update") 
         end
 
         it { should have_content("error") }
@@ -228,7 +226,7 @@ describe "Casas pagina" do
         let(:new_name)  { "New Name" }
         before do
           fill_in "Descricao",             with: new_name
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_name) }
