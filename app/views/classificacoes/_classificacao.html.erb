@@ -1,6 +1,6 @@
 <tr>
 	 <td><%= link_to classificacao.descricao, classificacao %></td>
    <td><%= classificacao.cdd  %></td>
-	 <td><%= link_to "Edit", edit_classificacao_path(classificacao), class: "btn btn-mini btn-primary" %> </td>
-	 <td><%= link_to "Delete", classificacao, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar a classificacao?" } %> </td>
+	 <td><%= link_to t('views.edit'), edit_classificacao_path(classificacao), class: "btn btn-mini btn-primary" %> </td>
+	 <td><%= link_to t('views.destroy'), classificacao, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
 </tr>

@@ -1,7 +1,7 @@
 <% provide(:title, 'Classificações') %>
-<h1>All classificações</h1>
+<h1><%= t('views.listing') %> classificações</h1>
 
-<%= link_to "New classificação", new_classificacao_path, class: "btn btn-primary btn-large btn-block"  %>
+<%= link_to "#{t('views.new_female')} classificação", new_classificacao_path, class: "btn btn-primary btn-large btn-block"  %>
 
 <%= will_paginate %>
 

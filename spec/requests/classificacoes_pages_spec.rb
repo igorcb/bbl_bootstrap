@@ -30,8 +30,8 @@ describe "Classificacoes Pagina" do
       end
 
       it { should have_title('Classificações') }
-      it { should have_content('All classificações') }
-      it { should have_link('New classificação', href: new_classificacao_path) }
+      it { should have_content(I18n.t('views.listing') + ' classificações') }
+      it { should have_link(I18n.t('views.new_female') + ' classificação', href: new_classificacao_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:classificacao) } } 
@@ -57,11 +57,11 @@ describe "Classificacoes Pagina" do
        	  visit classificacoes_path
         end
       
-        it { should have_link('Delete', href: classificacao_path(Classificacao.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: classificacao_path(Classificacao.first)) }
 
         it "deve ser capaz de apagar classificacao" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Classificacao, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -78,7 +78,7 @@ describe "Classificacoes Pagina" do
           visit classificacoes_path
         end
     
-        it { should have_link('Edit', href: edit_classificacao_path(@classificacao)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_classificacao_path(@classificacao)) }
       end
 
     end
@@ -118,9 +118,9 @@ describe "Classificacoes Pagina" do
       it { should have_content(classificacao.cdd) }
       it { should have_content(classificacao.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_classificacao_path) }
-      it { should have_link('Edit', href: edit_classificacao_path(classificacao)) }
-      it { should have_link('All', href: classificacoes_path) }
+      it { should have_link(I18n.t('views.new'), href: new_classificacao_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_classificacao_path(classificacao)) }
+      it { should have_link(I18n.t('views.list'), href: classificacoes_path) }
     end
   end
 
@@ -151,12 +151,12 @@ describe "Classificacoes Pagina" do
         sign_in usuario
         visit new_classificacao_path 
       end
-      it { should have_content("New classificacao") }
-      it { should have_title("New classificacao") }
+      it { should have_content(I18n.t('views.new_female') + ' classificacao') }
+      it { should have_title(I18n.t('views.new_female') + ' classificacao') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: classificacoes_path) }
+      it { should have_link(I18n.t("views.cancel"), href: classificacoes_path) }
 
-      let(:submit) { "Save classificacao" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um classificacao" do
@@ -219,16 +219,16 @@ describe "Classificacoes Pagina" do
         visit edit_classificacao_path(classificacao)
       end
 
-      it { should have_content('Edit classificação') }
-      it { should have_title('Edit classificação') }
+      it { should have_content(I18n.t('views.edit') + ' classificação') }
+      it { should have_title(I18n.t('views.edit') + ' classificação') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: classificacoes_path) }
+      it { should have_link(I18n.t("views.cancel"), href: classificacoes_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
           fill_in "Cdd",                   with: ""
-          click_button "Save changes" 
+          click_button I18n.t("views.update")
         end
 
         it { should have_content("error") }
@@ -240,7 +240,7 @@ describe "Classificacoes Pagina" do
         before do
           fill_in "Descricao",             with: new_classificacao
           fill_in "Cdd",             with: new_cdd
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_cdd) }
