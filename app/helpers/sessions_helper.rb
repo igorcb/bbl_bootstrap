@@ -41,14 +41,14 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: t(:please_sign_in)
     end
   end
 
   def user_admin
     unless current_user.admin?
       store_location
-      redirect_to signin_url, notice: "Somente os administradores podem adicionar, editar e excluir."
+      redirect_to signin_url, notice: t(:only_administrator)
     end
   end
 end
