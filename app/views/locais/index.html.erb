@@ -1,7 +1,7 @@
 <% provide(:title, 'Locais') %>
-<h1>All locais</h1>
+<h1><%= t('views.listing') %> locais</h1>
 
-<%= link_to "New local", new_local_path, class: "btn btn-primary btn-large btn-block"  %>
+<%= link_to "#{t('views.new')} local", new_local_path, class: "btn btn-primary btn-large btn-block"  %>
 
 <%= will_paginate %>
 

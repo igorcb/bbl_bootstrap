@@ -1,5 +1,5 @@
-<% provide(:title, 'Edit local') %>
-<h1>Edit local</h1>
+<% provide(:title, "#{t('views.edit')} local") %>
+<h1><%= t('views.edit') %> local</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -7,8 +7,8 @@
       <%= render "fields", f: f %>
     
       <div class="form-actions">
-        <%= f.submit "Save changes", class: "btn btn-primary" %>
-        <%= link_to "Cancel", locais_path, class: "btn btn-mini" %>
+        <%= f.submit t("views.update"), class: "btn btn-primary" %>
+        <%= link_to t("views.cancel"), locais_path, class: "btn btn-mini" %>
       </div>
     <% end %>
 

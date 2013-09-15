@@ -29,8 +29,8 @@ describe "Locais Pagina" do
     	  visit locais_path
       end
     	it { should have_title('Locais') }
-      it { should have_content('All locais') }
-      it { should have_link('New local', href: new_local_path ) }
+      it { should have_content(I18n.t('views.listing') + ' locais') }
+      it { should have_link(I18n.t('views.new') , href: new_local_path ) }
 
       describe "paginations" do
         before(:all) { 35.times { FactoryGirl.create(:local) } } 
@@ -55,11 +55,11 @@ describe "Locais Pagina" do
           visit locais_path
         end
       
-        it { should have_link('Delete', href: local_path(Local.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: local_path(Local.first)) }
 
         it "deve ser capaz de apagar local" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Local, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -76,7 +76,7 @@ describe "Locais Pagina" do
           visit locais_path
         end
     
-        it { should have_link('Edit', href: edit_local_path(@local)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_local_path(@local)) }
       end
 		end
   end
@@ -114,9 +114,9 @@ describe "Locais Pagina" do
       it { should have_content(local.descricao) }
       it { should have_title(local.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_local_path) }
-      it { should have_link('Edit', href: edit_local_path(local)) }
-      it { should have_link('All', href: locais_path) }
+      it { should have_link(I18n.t('views.new'), href: new_local_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_local_path(local)) }
+      it { should have_link(I18n.t('views.list'), href: locais_path) }
     end
   end
 
@@ -147,12 +147,12 @@ describe "Locais Pagina" do
         sign_in usuario
         visit new_local_path 
       end
-      it { should have_content("New local") }
-      it { should have_title("New local") }
-     it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: locais_path) }
+      it { should have_content(I18n.t('views.new') + ' local') }
+      it { should have_title(I18n.t('views.new') + ' local') }
+      it { should have_selector('div.form-actions') }
+      it { should have_link(I18n.t('views.cancel'), href: locais_path) }
 
-      let(:submit) { "Save local" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um local" do
@@ -211,15 +211,15 @@ describe "Locais Pagina" do
         sign_in usuario
         visit edit_local_path(local)
       end
-      it { should have_content('Edit local') }
-      it { should have_title('Edit local') }
+      it { should have_content(I18n.t('views.edit') + ' local') }
+      it { should have_title(I18n.t('views.edit') + ' local') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: locais_path) }
+      it { should have_link(I18n.t("views.cancel"), href: locais_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
-          click_button "Save changes" 
+          click_button I18n.t("views.update")
         end
 
         it { should have_content("error") }
@@ -229,7 +229,7 @@ describe "Locais Pagina" do
         let(:new_local)  { "Novo local" }
         before do
           fill_in "Descricao",             with: new_local
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_local) }

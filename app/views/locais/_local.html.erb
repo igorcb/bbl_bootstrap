@@ -1,5 +1,5 @@
 <tr>
   <td> <%= link_to local.descricao, local  %> </td>
-  <td> <%= link_to "Edit", edit_local_path(local), class: "btn btn-mini btn-primary"  %> </td>
-  <td> <%= link_to "Delete", local, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar o local?" } %> </td>
+  <td> <%= link_to t('views.edit'), edit_local_path(local), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to t('views.destroy'), local, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
 </tr>
