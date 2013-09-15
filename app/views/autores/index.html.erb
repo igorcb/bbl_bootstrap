@@ -1,7 +1,7 @@
 <% provide(:title, 'Autores') %>
-<h1>All autores</h1>
+<h1><%= t('views.listing') %> autores</h1>
 
-<%= link_to "New autor", new_autor_path, class: "btn btn-primary btn-large btn-block"  %>
+<%= link_to "#{t('views.new')} autor", new_autor_path, class: "btn btn-primary btn-large btn-block"  %>
 
 <%= will_paginate  %>
 

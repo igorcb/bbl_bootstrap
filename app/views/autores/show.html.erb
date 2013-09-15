@@ -10,7 +10,7 @@
 </p>
 
 <div class="form-actions">
-  <%= link_to "New", new_autor_path, class: "btn btn-primary" %>
-  <%= link_to "Edit", edit_autor_path(@autor), class: "btn" %>
-  <%= link_to "All", autores_path, class: "btn" %>
+  <%= link_to t('views.new'), new_autor_path, class: "btn btn-primary" %>
+  <%= link_to t('views.edit'), edit_autor_path(@autor), class: "btn" %>
+  <%= link_to t('views.list'), autores_path, class: "btn" %>
 </div>

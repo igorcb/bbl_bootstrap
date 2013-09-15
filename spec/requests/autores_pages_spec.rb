@@ -30,8 +30,8 @@ describe "Autores Paginas" do
       end
 
       it { should have_title('Autores') }
-      it { should have_content('All autores') }
-      it { should have_link('New autor', href: new_autor_path) }
+      it { should have_content(I18n.t('views.listing') + ' autor') }
+      it { should have_link(I18n.t('views.new') + ' autor', href: new_autor_path) }
 
       describe "paginations" do
 	      before(:all) { 35.times { FactoryGirl.create(:autor) } } 
@@ -57,11 +57,11 @@ describe "Autores Paginas" do
        	  visit autores_path
         end
       
-        it { should have_link('Delete', href: autor_path(Autor.first)) }
+        it { should have_link(I18n.t('views.destroy'), href: autor_path(Autor.first)) }
 
         it "deve ser capaz de apagar autor" do
           expect do
-            click_link('Delete', match: :first)
+            click_link(I18n.t('views.destroy'), match: :first)
           end.to change(Autor, :count).by(-1)
         end
         # it { should_not have_link('delete', href: usuario_path(admin)) }
@@ -78,7 +78,7 @@ describe "Autores Paginas" do
           visit autores_path
         end
     
-        it { should have_link('Edit', href: edit_autor_path(@autor)) }
+        it { should have_link(I18n.t('views.edit'), href: edit_autor_path(@autor)) }
       end
     end
   end
@@ -117,9 +117,9 @@ describe "Autores Paginas" do
       it { should have_content(autor.cutter) }
       it { should have_title(autor.descricao) }
       it { should have_selector('div.form-actions') }
-      it { should have_link('New', href: new_autor_path) }
-      it { should have_link('Edit', href: edit_autor_path(autor)) }
-      it { should have_link('All', href: autores_path) }
+      it { should have_link(I18n.t('views.new'), href: new_autor_path) }
+      it { should have_link(I18n.t('views.edit'), href: edit_autor_path(autor)) }
+      it { should have_link(I18n.t('views.list'), href: autores_path) }
     end
   end
 
@@ -150,12 +150,12 @@ describe "Autores Paginas" do
         sign_in usuario
         visit new_autor_path 
       end
-      it { should have_content("New autor") }
-      it { should have_title("New autor") }
+      it { should have_title(I18n.t('views.new') + ' autor') }
+      it { should have_content(I18n.t('views.new') + ' autor') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: autores_path) }
+      it { should have_link(I18n.t("views.cancel"), href: autores_path) }
 
-      let(:submit) { "Save autor" }
+      let(:submit) { I18n.t("views.save") }
 
       describe "com informacoes invalidas" do
         it "nao deve criar um autor" do
@@ -217,16 +217,16 @@ describe "Autores Paginas" do
         sign_in usuario
         visit edit_autor_path(autor)
       end
-      it { should have_content('Edit autor') }
-      it { should have_title('Edit autor') }
+      it { should have_content(I18n.t('views.edit') + ' autor') }
+      it { should have_title(I18n.t('views.edit') + ' autor') }
       it { should have_selector('div.form-actions') }
-      it { should have_link("Cancel", href: autores_path) }
+      it { should have_link(I18n.t("views.cancel"), href: autores_path) }
 
       describe "com informacoes invalidas" do
         before do 
           fill_in "Descricao",             with: ""
           fill_in "Cutter",                with: ""
-          click_button "Save changes" 
+          click_button I18n.t("views.update")
         end
 
         it { should have_content("error") }
@@ -238,7 +238,7 @@ describe "Autores Paginas" do
         before do
           fill_in "Descricao",             with: new_autor
           fill_in "Cutter",             with: new_cutter
-          click_button "Save changes"
+          click_button I18n.t("views.update")
         end
 
         it { should have_title(new_autor) }

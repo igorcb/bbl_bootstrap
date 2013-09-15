@@ -1,6 +1,6 @@
 <tr>
-	 <td><%= link_to autor.descricao, autor %></td>
-	 <td><%= autor.cutter  %></td>
-	 <td> <%= link_to "Edit", edit_autor_path(autor), class: "btn btn-mini btn-primary" %> </td>
-	 <td> <%= link_to "Delete", autor, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: "Deseja apagar o autor?" } %> </td>
+  <td><%= link_to autor.descricao, autor %></td>
+  <td><%= autor.cutter  %></td>
+  <td> <%= link_to t('views.edit'), edit_autor_path(autor), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to t('views.destroy'), autor, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
 </tr>
