@@ -7,7 +7,7 @@ describe "Editoras Paginas" do
     describe "deve estar logado" do
   	  before { visit editoras_path }
 
-  	  it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -17,7 +17,7 @@ describe "Editoras Paginas" do
   	    visit editoras_path 
   	  end
 
-  	  it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -89,7 +89,7 @@ describe "Editoras Paginas" do
       let(:editora) { FactoryGirl.create(:editora) }
       before { visit editora_path(editora) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -101,7 +101,7 @@ describe "Editoras Paginas" do
         visit editora_path(editora) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -129,7 +129,7 @@ describe "Editoras Paginas" do
       let(:editora) { FactoryGirl.create(:editora) }
       before { visit new_editora_path  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -141,7 +141,7 @@ describe "Editoras Paginas" do
         visit new_editora_path(editora) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -199,7 +199,7 @@ describe "Editoras Paginas" do
       let(:editora) { FactoryGirl.create(:editora) }
       before { visit edit_editora_path(:editora)  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -211,7 +211,7 @@ describe "Editoras Paginas" do
         visit edit_editora_path(editora) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do

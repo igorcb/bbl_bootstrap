@@ -8,7 +8,7 @@ describe "Autores Paginas" do
     describe "deve estar logado" do
   	  before { visit autores_path }
 
-  	  it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -18,7 +18,7 @@ describe "Autores Paginas" do
   	    visit autores_path 
   	  end
 
-  	  it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -89,7 +89,7 @@ describe "Autores Paginas" do
       let(:autor) { FactoryGirl.create(:autor) }
       before { visit autor_path(autor) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -101,7 +101,7 @@ describe "Autores Paginas" do
         visit autor_path(autor) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -128,7 +128,7 @@ describe "Autores Paginas" do
       let(:autor) { FactoryGirl.create(:autor) }
       before { visit new_autor_path  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -140,7 +140,7 @@ describe "Autores Paginas" do
         visit new_autor_path(autor) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -194,7 +194,7 @@ describe "Autores Paginas" do
       let(:autor) { FactoryGirl.create(:autor) }
       before { visit edit_autor_path(:autor)  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -206,7 +206,7 @@ describe "Autores Paginas" do
         visit edit_autor_path(autor) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do

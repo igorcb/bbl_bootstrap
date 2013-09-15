@@ -7,7 +7,7 @@ describe "Classificacoes Pagina" do
     describe "deve estar logado" do
   	  before { visit classificacoes_path }
 
-  	  it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -17,7 +17,7 @@ describe "Classificacoes Pagina" do
   	    visit classificacoes_path 
   	  end
 
-  	  it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     
@@ -90,7 +90,7 @@ describe "Classificacoes Pagina" do
       let(:classificacao) { FactoryGirl.create(:classificacao) }
       before { visit classificacao_path(classificacao) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -102,7 +102,7 @@ describe "Classificacoes Pagina" do
         visit classificacao_path(classificacao) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -129,7 +129,7 @@ describe "Classificacoes Pagina" do
       let(:classificacao) { FactoryGirl.create(:autor) }
       before { visit new_classificacao_path  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -141,7 +141,7 @@ describe "Classificacoes Pagina" do
         visit new_classificacao_path(classificacao) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -195,7 +195,7 @@ describe "Classificacoes Pagina" do
       let(:classificacao) { FactoryGirl.create(:classificacao) }
       before { visit edit_classificacao_path(:classificacao)  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -207,7 +207,7 @@ describe "Classificacoes Pagina" do
         visit edit_classificacao_path(classificacao) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do

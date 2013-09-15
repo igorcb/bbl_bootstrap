@@ -7,7 +7,7 @@ describe "Casas pagina" do
     describe "deve estar logado" do
       before { visit casas_path }
 
-      it { should have_content("Please sign in.") }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como um usuario comum" do
@@ -17,7 +17,7 @@ describe "Casas pagina" do
         visit casas_path
       end
  
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -88,7 +88,7 @@ describe "Casas pagina" do
     let(:casa) { FactoryGirl.create(:casa) }
       before { visit casas_path(casa) }
 
-      it { should have_content("Please sign in.") }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como um usuario comum" do
@@ -99,7 +99,7 @@ describe "Casas pagina" do
         visit casas_path(casa)
       end
  
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -125,7 +125,7 @@ describe "Casas pagina" do
 
       before { visit new_casa_path }
 
-      it { should have_content("Please sign in.") }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como um usuario comum" do
@@ -136,7 +136,7 @@ describe "Casas pagina" do
         visit new_casa_path
       end
  
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
   
     describe "como usuario administrador" do
@@ -186,7 +186,7 @@ describe "Casas pagina" do
       let(:casa) { FactoryGirl.create(:casa) }
       before { visit edit_casa_path(casa) }
 
-      it { should have_content("Please sign in.") }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como um usuario comum" do
@@ -198,7 +198,7 @@ describe "Casas pagina" do
         visit edit_casa_path(casa)
       end
  
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
   
     describe "como usuario administrador" do

@@ -8,7 +8,7 @@ describe "Locais Pagina" do
     describe "deve estar logado" do
       before { visit locais_path }
 
-      it { should have_content("Please sign in.") }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
 		describe "como um usuario comum" do
@@ -18,7 +18,7 @@ describe "Locais Pagina" do
         visit locais_path
       end
  
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
 		end
 
 		describe "como usuario administrador" do
@@ -87,7 +87,7 @@ describe "Locais Pagina" do
       let(:local) { FactoryGirl.create(:local) }
       before { visit local_path(local) }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -99,7 +99,7 @@ describe "Locais Pagina" do
         visit local_path(local) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -125,7 +125,7 @@ describe "Locais Pagina" do
       let(:local) { FactoryGirl.create(:local) }
       before { visit new_local_path  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -137,7 +137,7 @@ describe "Locais Pagina" do
         visit new_local_path(local) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
@@ -188,7 +188,7 @@ describe "Locais Pagina" do
       let(:local) { FactoryGirl.create(:local) }
       before { visit edit_local_path(:local)  }
 
-      it { should have_content('Please sign in.') }
+      it { should have_content(I18n.t(:please_sign_in)) }
     end
 
     describe "como usuario comum " do
@@ -200,7 +200,7 @@ describe "Locais Pagina" do
         visit edit_local_path(local) 
       end
 
-      it { should have_content('administradores') }
+      it { should have_content(I18n.t(:only_administrator)) }
     end
 
     describe "como usuario administrador" do
