@@ -229,12 +229,6 @@ describe "Livros Pagina" do
       end
 
       describe "com informacoes validas" do
-        # let(:casa)           { FactoryGirl.create(:casa) } 
-        # let(:autor)          { FactoryGirl.create(:autor) } 
-        # let(:editora)        { FactoryGirl.create(:editora) }
-        # let(:local)          { FactoryGirl.create(:local) }
-        # let(:assunto)        { FactoryGirl.create(:assunto) }
-        # let(:classificacao)  { FactoryGirl.create(:classificacao) }
         before { @livro = FactoryGirl.create(:livro) }
         before(:all) do
           casas         = FactoryGirl.create_list(:casa, 10)
@@ -270,7 +264,7 @@ describe "Livros Pagina" do
           select('Assunto 7',      from: 'livro_assunto_id')
           select('Classificacao 2', from: 'livro_classificacao_id')
 
-          fill_in "Nº Tombo",   with: novo_num_tombo
+          fill_in "Nº Tombo",    with: novo_num_tombo
           fill_in "Descrição",   with: nova_descricao
           fill_in "Cutter",      with: novo_cutter
           fill_in "ISBN",        with: novo_isbn
@@ -290,7 +284,7 @@ describe "Livros Pagina" do
 
         describe "depois de salvar o livro" do
           before { click_button submit }
-          let(:livro) { Livro.find_by(num_tombo: novo_tombo) }
+          let(:livro) { Livro.find_by(num_tombo: novo_num_tombo) }
 
         #   #it { should have_link('Sign out') }
           it { should have_title(livro.descricao) }
