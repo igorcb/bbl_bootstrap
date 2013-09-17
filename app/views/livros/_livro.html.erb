@@ -1,0 +1,12 @@
+<tr>
+  <td> <%= link_to livro.num_tombo, livro  %> </td>
+  <td> <%= link_to livro.cutter, livro  %> </td>
+  <td> <%= link_to livro.descricao, livro %> </td>
+  <td> <%= livro.casa.descricao %> </td>
+  <td> <%= livro.autor.descricao %> </td>
+  <td> <%= livro.assunto.descricao %> </td>
+  <td> <%= livro.classificacao.cdd %> </td>
+  <td> <%= link_to t('views.edit'), edit_livro_path(livro), class: "btn btn-mini btn-primary"  %> </td>
+  <td> <%= link_to t('views.destroy'), livro, method: :delete, class: "btn btn-mini btn-danger", data: { confirm: t('views.are_you_sure') } %> </td>
+
+</tr>

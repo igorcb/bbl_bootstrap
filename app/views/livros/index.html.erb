@@ -1,2 +1,26 @@
-<h1>Livros#index</h1>
-<p>Find me in app/views/livros/index.html.erb</p>
+<% provide(:title, 'Livros') %>
+<h1><%= t('views.listing') %> livros </h1>
+
+<%= link_to "#{t('views.new')} livro", new_livro_path, class: "btn btn-primary btn-large btn-block"  %>
+
+<%= will_paginate %>
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Tombo</th>
+		<th>Cutter</th>
+		<th>Título</th>
+		<th>Casa</th>
+		<th>Autor</th>
+		<th>Assunto</th>
+		<th>Classificação</th>
+		<th colspan="3">Opções</th>
+	</thead>
+	<tbody>
+
+    <%= render @livros %>
+
+	</tbody>
+</table>
+
+<%= will_paginate %>

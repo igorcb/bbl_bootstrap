@@ -1,0 +1,74 @@
+<%= provide(:title, @livro.descricao) %>
+
+<h1>Título: <%= @livro.descricao %></h1>
+	
+<p>
+	<strong>Nº Tombo:</strong>
+	<%= @livro.num_tombo %>
+</p>
+
+<p>
+	<strong>Casa:</strong>
+	<%= @livro.casa.descricao %>
+</p>
+
+<p>
+	<strong>Autor:</strong>
+	<%= @livro.autor.descricao %>
+</p>
+
+<p>
+	<strong>Editora:</strong>
+	<%= @livro.editora.descricao %>
+</p>
+
+<p>
+	<strong>Local:</strong>
+	<%= @livro.local.descricao %>
+</p>
+
+<p>
+	<strong>Assunto:</strong>
+	<%= @livro.assunto.descricao %>
+</p>
+
+<p>
+	<strong>Classificação:</strong>
+	<%= @livro.classificacao.cdd %>
+</p>
+
+<p>
+	<strong>Cutter:</strong>
+	<%= @livro.cutter %>
+</p>
+
+<p>
+	<strong>ISBN:</strong>
+	<%= @livro.isbn %>
+</p>
+
+<p>
+	<strong>Edição:</strong>
+	<%= @livro.edicao %>
+</p>
+
+<p>
+	<strong>Ano:</strong>
+	<%= @livro.ano %>
+</p>
+
+<p>
+	<strong>Páginas:</strong>
+	<%= @livro.paginas %>
+</p>
+
+<p>
+	<strong>Localização:</strong>
+	<%= @livro.localizacao %>
+</p>
+
+<div class="form-actions">
+  <%= link_to t('views.new'), new_livro_path, class: "btn btn-primary" %>
+  <%= link_to t('views.edit'), edit_livro_path(@livro), class: "btn" %>
+  <%= link_to t('views.list'), livros_path, class: "btn" %>
+</div>

@@ -45,4 +45,22 @@ FactoryGirl.define do
     sequence(:descricao)  { |n| "Local #{n}" }
   end
 
+  factory :livro do
+    association :casa,    factory: :casa
+    association :autor,   factory: :autor
+    association :editora, factory: :editora
+    association :local,   factory: :local
+    association :assunto, factory: :assunto
+    association :classificacao, factory: :classificacao
+    sequence(:num_tombo)    { |n| "000 #{n}" }
+    sequence(:descricao)    { |n| "Livro para exemplo #{n}" }
+    sequence(:cutter)       { |n| "00.#{n}" }
+    sequence(:isbn)         { |n| "9900000000#{n}" }
+    edicao      "1"
+    ano         "1990"
+    paginas     "300"
+    localizacao "EST 5 / PRTL 10"
+
+  end
+
 end

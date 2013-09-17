@@ -18,7 +18,7 @@ BblBootstrap::Application.routes.draw do
   resources :classificacoes
   resources :autores
   resources :assuntos
-  # resources :livros
+  resources :livros
 
   #root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

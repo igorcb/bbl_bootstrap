@@ -1,0 +1,44 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label :num_tombo, "Nº Tombo" %>
+<%= f.text_field :num_tombo %>
+
+<%= f.label :descricao, "Descrição" %>
+<%= f.text_field :descricao %>
+
+<%= f.label :casa_id, "Casa" %>
+<%= f.collection_select :casa_id, Casa.all, :id, :descricao, prompt: true %>
+
+<%= f.label :autor_id, "Autor" %>
+<%= f.collection_select :autor_id, Autor.all, :id, :descricao, prompt: true %>
+
+<%= f.label :assunto_id, "Assunto" %>
+<%= f.collection_select :assunto_id, Assunto.all, :id, :descricao, prompt: true %>
+
+<%= f.label :editora_id, "Editora" %>
+<%= f.collection_select :editora_id, Editora.all, :id, :descricao, prompt: true %>
+
+<%= f.label :local_id, "Local" %>
+<%= f.collection_select :local_id, Local.all, :id, :descricao, prompt: true %>
+
+<%= f.label :classificacao_id, "Classificação" %>
+<%= f.collection_select :classificacao_id, Classificacao.all, :id, :descricao, prompt: true %>
+
+<%= f.label :cutter, "Cutter" %>
+<%= f.text_field :cutter %>
+
+<%= f.label :isbn, "ISBN" %>
+<%= f.text_field :isbn %>
+
+<%= f.label :edicao, "Edição" %>
+<%= f.text_field :edicao %>
+
+<%= f.label :ano, "Ano" %>
+<%= f.text_field :ano %>
+
+<%= f.label :paginas, "Páginas" %>
+<%= f.text_field :paginas %>
+
+<%= f.label :localizacao, "Localização" %>
+<%= f.text_field :localizacao %>
+
