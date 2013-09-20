@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Livros Pagina" do
   subject { page }
-  
+  #teste rspec  
   describe "index" do
     describe "deve estar logado" do
       before { visit livros_path }
