@@ -364,6 +364,12 @@ describe "Livros Pagina" do
         let(:nova_descricao)   { 'Novo livro para exemplo edit' }
         let(:novo_cutter)      { "00.99" }
         let(:novo_isbn)        { "99000000099" }
+        let(:nova_casa)        { Casa.last }
+        let(:novo_autor)       { Autor.last }
+        let(:nova_editora)     { Editora.last }
+        let(:novo_local)       { Local.last }
+        let(:novo_assunto)     { Assunto.last }
+        let(:nova_classificacao) { Classificacao.last }
         # before { @livro = FactoryGirl.create(:livro) }
 
         before(:all) do
@@ -385,12 +391,12 @@ describe "Livros Pagina" do
         end
 
         before do
-          # select 'Casa 2',         from: 'livro_casa_id'
-          # select('Autor 3',        from: 'livro_autor_id')
-          # select('Editora 5',      from: 'livro_editora_id')
-          # select('Local 6',        from: 'livro_local_id')
-          # select('Assunto 8',      from: 'livro_assunto_id')
-          # select('Classificacao 1', from: 'livro_classificacao_id')
+          select(nova_casa.descricao,         from: 'livro_casa_id')
+          select(novo_autor.descricao,        from: 'livro_autor_id')
+          select(nova_editora.descricao,      from: 'livro_editora_id')
+          select(novo_local.descricao,        from: 'livro_local_id')
+          select(novo_assunto.descricao,      from: 'livro_assunto_id')
+          select(nova_classificacao.descricao, from: 'livro_classificacao_id')
 
           # fill_in "Nº Tombo",    with: novo_num_tombo
           fill_in "Descrição",   with: nova_descricao
