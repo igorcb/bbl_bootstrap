@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Livros Pagina" do
   subject { page }
-  #teste rspec  
+
   describe "index" do
     describe "deve estar logado" do
       before { visit livros_path }
@@ -253,16 +253,22 @@ describe "Livros Pagina" do
         let(:novo_isbn)        { "99000000011" }
         let(:nova_edicao)      { "1" }
         let(:novo_ano)         { "1995" }
-        let(:nova_pagina)     { "500" }
+        let(:nova_pagina)      { "500" }
         let(:nova_localizacao) { "EST 5 / PRTL 10" }
+        let(:nova_casa)        { Casa.first }
+        let(:novo_autor)       { Autor.first }
+        let(:nova_editora)     { Editora.first }
+        let(:novo_local)       { Local.first }
+        let(:novo_assunto)     { Assunto.first }
+        let(:nova_classificacao) { Classificacao.first }
 
         before do
-          select 'Casa 1',         from: 'livro_casa_id'
-          select('Autor 5',        from: 'livro_autor_id')
-          select('Editora 3',      from: 'livro_editora_id')
-          select('Local 3',        from: 'livro_local_id')
-          select('Assunto 7',      from: 'livro_assunto_id')
-          select('Classificacao 2', from: 'livro_classificacao_id')
+          select(nova_casa.descricao,         from: 'livro_casa_id')
+          select(novo_autor.descricao,        from: 'livro_autor_id')
+          select(nova_editora.descricao,      from: 'livro_editora_id')
+          select(novo_local.descricao,        from: 'livro_local_id')
+          select(novo_assunto.descricao,      from: 'livro_assunto_id')
+          select(nova_classificacao.descricao, from: 'livro_classificacao_id')
 
           fill_in "Nº Tombo",    with: novo_num_tombo
           fill_in "Descrição",   with: nova_descricao
