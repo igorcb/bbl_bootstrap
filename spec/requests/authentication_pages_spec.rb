@@ -49,7 +49,7 @@ describe "Authentication" do
       it { should have_link('Classificacoes', href: classificacoes_path) }
       it { should have_link('Editoras',    href: editoras_path) }
       it { should have_link('Locais',      href: locais_path) }
-      # it { should have_link('Livros',    href: assuntos_path) }
+      it { should have_link('Livros',      href: livros_path) }
 
       describe "followed by signout" do
         before { click_link "Sign out" }
