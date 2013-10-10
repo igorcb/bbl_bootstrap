@@ -56,12 +56,12 @@ Spork.prefork do
     #   DeferredGarbageCollection.reconsider
     # end    
 
-    config.before(:all) do
-      DeferredGarbageCollection.start
-    end
-    config.after(:all) do
-      DeferredGarbageCollection.reconsider
-    end    
+    # config.before(:all) do
+    #   DeferredGarbageCollection.start
+    # end
+    # config.after(:all) do
+    #   DeferredGarbageCollection.reconsider
+    # end    
        
     config.include Capybara::DSL
     # Disable the old-style object.should syntax.
