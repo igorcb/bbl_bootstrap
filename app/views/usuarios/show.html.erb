@@ -1,11 +1,17 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @usuario.email) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= gravatar_for @usuario %>
+        <%= @usuario.name %>
+        <%= @usuario.email %>
       </h1>
     </section>
   </aside>
+</div>
+
+<div class="form-actions">
+  <%= link_to t('views.edit'), edit_usuario_path(@usuario), class: "btn"  %>
+  <%= link_to t('views.list'), usuarios_path, class: "btn" %>
 </div>

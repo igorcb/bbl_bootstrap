@@ -37,7 +37,7 @@ describe "Authentication" do
 
       before { sign_in usuario }
 
-      it { should have_title(usuario.name) }
+      it { should have_title(usuario.email) }
       it { should have_link('Users',       href: usuarios_path) }
       it { should have_link('Profile',     href: usuario_path(usuario)) }
       it { should have_link('Settings',    href: edit_usuario_path(usuario)) }
@@ -83,7 +83,7 @@ describe "Authentication" do
             end
 
             it "should render the default (profile) page" do
-              expect(page).to have_title(usuario.name)
+              expect(page).to have_title(usuario.email)
             end
           end
         end
@@ -132,7 +132,7 @@ describe "Authentication" do
 
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete usuario_path(usuario) }
-        specify { expect(response).to redirect_to(root_url) }
+        specify { expect(response).to redirect_to(usuarios_path) }
       end
     end
 

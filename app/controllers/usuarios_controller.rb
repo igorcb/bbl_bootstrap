@@ -1,14 +1,14 @@
 class UsuariosController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :user_admin,     only: [:index]
 
   def index
     @usuarios = Usuario.paginate(page: params[:page])
   end
 
   def show
-  	@user = Usuario.find(params[:id])
+  	@usuario = Usuario.find(params[:id])
   end
 
   def new
@@ -22,6 +22,7 @@ class UsuariosController < ApplicationController
   def create
     @user = Usuario.new(user_params)    # Not the final implementation!
     if @user.save
+      sign_in @user
       flash[:success] = "Bem vindo to the BBL OnLine!"
       redirect_to @user
     else
@@ -52,20 +53,20 @@ class UsuariosController < ApplicationController
                                    :password_confirmation)
     end
     
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
+    # def signed_in_user
+    #   unless signed_in?
+    #     store_location
+    #     redirect_to signin_url, notice: t(:please_sign_in)
+    #   end
+    # end
 
     def correct_user
       @user = Usuario.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+    # def admin_user
+    #   redirect_to(root_url) unless current_user.admin?
+    # end
 
 end
