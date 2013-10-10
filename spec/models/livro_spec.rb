@@ -14,7 +14,7 @@ describe Livro do
   	                          local_id: local.id,
   	                        assunto_id: assunto.id,
   	                  classificacao_id: classificacao.id,
-  	                         num_tombo: "000001",
+  	                         #num_tombo: "000001",
   	                         descricao: "Livro Numero 00001",
   	                            cutter: "A001A",
   	                              isbn: "85-00-00000-1",
@@ -50,6 +50,12 @@ describe Livro do
 
   it { should be_valid }
 
+
+  describe "sugerir num_tombo  " do
+    before { @livro.save }
+    its(:num_tombo) { should_not be_blank }
+  end  
+
   describe "quando a casa_id nao estiver presente" do
     before { @livro.casa_id = nil }
     it { should_not be_valid }
@@ -80,10 +86,10 @@ describe Livro do
     it { should_not be_valid }
   end
 
-  describe "quando a num_tombo nao estiver presente" do
-    before { @livro.num_tombo = " " }
-    it { should_not be_valid }
-  end
+  # describe "quando a num_tombo nao estiver presente" do
+  #   before { @livro.num_tombo = " " }
+  #   it { should_not be_valid }
+  # end
 
   describe "quando a descricao nao estiver presente" do
     before { @livro.descricao = " " }

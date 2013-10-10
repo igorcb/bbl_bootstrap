@@ -229,7 +229,10 @@ describe "Livros Pagina" do
       end
 
       describe "com informacoes validas" do
-        before { @livro = FactoryGirl.create(:livro) }
+        before do
+          @livro = FactoryGirl.create(:livro) 
+          @proxtombo = Livro.proxtombo
+        end
         before(:all) do
           casas         = FactoryGirl.create_list(:casa, 10)
           autores       = FactoryGirl.create_list(:autor, 10)
@@ -247,7 +250,9 @@ describe "Livros Pagina" do
           Assunto.delete_all
           Classificacao.delete_all
         end
-        let(:novo_num_tombo)   { "000111" }
+
+        let(:novo_num_tombo)   { @proxtombo }
+
         let(:nova_descricao)   { 'Novo livro para exemplo' }
         let(:novo_cutter)      { "00.11" }
         let(:novo_isbn)        { "99000000011" }
@@ -270,8 +275,8 @@ describe "Livros Pagina" do
           select(novo_assunto.descricao,      from: 'livro_assunto_id')
           select(nova_classificacao.descricao, from: 'livro_classificacao_id')
 
-          fill_in "Nº Tombo",    with: novo_num_tombo
-          fill_in "Descrição",   with: nova_descricao
+          # fill_in "Nº Tombo",    with: novo_num_tombo
+          fill_in "Título",      with: nova_descricao
           fill_in "Cutter",      with: novo_cutter
           fill_in "ISBN",        with: novo_isbn
           fill_in "Edição",      with: nova_edicao
@@ -290,9 +295,8 @@ describe "Livros Pagina" do
 
         describe "depois de salvar o livro" do
           before { click_button submit }
-          let(:livro) { Livro.find_by(num_tombo: novo_num_tombo) }
+          let(:livro) { Livro.find_by(num_tombo: novo_num_tombo.to_s) }
 
-        #   #it { should have_link('Sign out') }
           it { should have_title(livro.descricao) }
           it { should have_selector('h1', text: livro.descricao) }
           it { should have_content(livro.num_tombo) }
@@ -342,6 +346,9 @@ describe "Livros Pagina" do
         sign_in usuario
         visit edit_livro_path(livro)
       end
+     
+      it { should have_content('p', text: "Nº Tombo: #{livro.num_tombo}" ) }
+
       it { should have_title(I18n.t('views.edit') + ' livro') }
       it { should have_content(I18n.t('views.edit') + ' livro') }
       it { should have_selector('div.form-actions') }
@@ -349,8 +356,8 @@ describe "Livros Pagina" do
 
       describe "com informacoes invalidas" do
         before do 
-          fill_in "Nº Tombo",    with: ""
-          fill_in "Descrição",   with: ""
+          #fill_in "Nº Tombo",    with: ""
+          fill_in "Título",      with: ""
           fill_in "Cutter",      with: ""
           fill_in "ISBN",        with: ""
 
@@ -360,6 +367,7 @@ describe "Livros Pagina" do
       end
 
       describe "com informacao validas" do
+
         #let(:novo_num_tombo)   { "000111" }
         let(:nova_descricao)   { 'Novo livro para exemplo edit' }
         let(:novo_cutter)      { "00.99" }
@@ -399,13 +407,15 @@ describe "Livros Pagina" do
           select(nova_classificacao.descricao, from: 'livro_classificacao_id')
 
           # fill_in "Nº Tombo",    with: novo_num_tombo
-          fill_in "Descrição",   with: nova_descricao
+          fill_in "Título",   with: nova_descricao
           fill_in "Cutter",      with: novo_cutter
           fill_in "ISBN",        with: novo_isbn
 
           click_button I18n.t("views.update")
         end
 
+
+        it { should have_content(livro.num_tombo) }
         it { should have_title(nova_descricao) }
         it { should have_content(novo_cutter) }
         it { should have_content(novo_isbn) }

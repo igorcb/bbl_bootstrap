@@ -1,9 +1,18 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.label :num_tombo, "Nº Tombo" %>
-<%= f.text_field :num_tombo %>
+<%#= f.label :num_tombo, "Nº Tombo" %>
+<%#= f.text_field :num_tombo %>
+  <% if !@livro.new_record? %>
+    
+    <p>
+    <strong>Nº Tombo:</strong>
+	  <%= @livro.num_tombo %>
+    </p>
+    
+    
+  <% end %>
 
-<%= f.label :descricao, "Descrição" %>
+<%= f.label :descricao, "Título" %>
 <%= f.text_field :descricao %>
 
 <%= f.label :casa_id, "Casa" %>

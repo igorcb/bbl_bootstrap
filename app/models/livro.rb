@@ -12,7 +12,7 @@ class Livro < ActiveRecord::Base
   validates :local_id, presence:true
   validates :assunto_id, presence:true
   validates :classificacao_id, presence:true
-  validates :num_tombo, presence:true, length: {maximum: 10}
+  validates :num_tombo, length: {maximum: 10}
   validates :descricao, presence:true, length: {maximum: 100}
   validates :cutter, presence:true, length: {maximum: 25}
   validates :isbn, length: {maximum: 30}
@@ -20,6 +20,8 @@ class Livro < ActiveRecord::Base
   validates :ano, length: {maximum: 4}
   validates :paginas, length: {maximum: 25}
   validates :localizacao, length: {maximum: 25}
+
+  before_create :escreve_tombo
 
   def proxtombo
     livro = Livro.order('id DESC').limit(1)
@@ -29,5 +31,22 @@ class Livro < ActiveRecord::Base
       proxtombo = 1 
     end
   end
+
+  def Livro.proxtombo
+    livro = Livro.order('id DESC').limit(1)
+    unless livro.empty?
+      proxtombo = livro[0].num_tombo.to_i + 1 
+    else
+      proxtombo = 1 
+    end
+  end
+
+
+  private
+
+    def escreve_tombo
+      self.num_tombo  = proxtombo
+    end
+
 
 end

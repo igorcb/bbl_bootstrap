@@ -47,6 +47,6 @@ class LivrosController < ApplicationController
   private
     def livro_params
     	params.require(:livro).permit(:casa_id, :autor_id, :editora_id, :local_id, :assunto_id, :classificacao_id,
-    		                            :num_tombo, :descricao, :isbn, :cutter, :edicao, :ano, :paginas, :localizacao)
+    		                            :descricao, :isbn, :cutter, :edicao, :ano, :paginas, :localizacao)
     end
 end
