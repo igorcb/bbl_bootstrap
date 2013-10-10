@@ -43,6 +43,25 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    # config.before(:all) do
+    #   DeferredGarbageCollection.start
+    # end
+    # config.after(:each) do
+    #   (instance_variables - DeferredGarbageCollection::RESERVED_IVARS).each do |ivar|
+    #     instance_variable_set(ivar, nil)
+    #   end
+    # end
+    # config.after(:all) do
+    #   DeferredGarbageCollection.reconsider
+    # end    
+
+    config.before(:all) do
+      DeferredGarbageCollection.start
+    end
+    config.after(:all) do
+      DeferredGarbageCollection.reconsider
+    end    
        
     config.include Capybara::DSL
     # Disable the old-style object.should syntax.
